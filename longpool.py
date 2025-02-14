@@ -48,7 +48,7 @@ def send_text(message):
         memory_percent = psutil.virtual_memory().percent
         send(message.chat.id, f'CPU: {cpu_percent}%, RAM: {memory_percent}%', standart_keyboard)
 
-    elif message.text.lower() in [(emojize("📊 загруженность 📊")), '/users']:
+    elif message.text.lower() in [(emojize("👤 пользователи 👤")), '/users']:
         for user in psutil.users():
             send(message.chat.id, f"👤 {user.name}, авторизован {int((time.time() - user.started)/60)} мин. назад", standart_keyboard)
 
