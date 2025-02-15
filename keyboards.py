@@ -2,7 +2,7 @@ from telebot import types
 from emoji import emojize
 
 standart_keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
-standart_keyboard.add(emojize("🤖 Статус 🤖"), emojize("⏳ Время работы ⏳")).add(emojize("📊 Загруженность 📊")).add(emojize("👤 Пользователи 👤"))
+standart_keyboard.add(emojize("🤖 Статус 🤖"), emojize("⏳ Время работы ⏳")).add(emojize("📊 Мониторинг 📊"), emojize("🔗 VPN 🔗")).add(emojize("👤 Пользователи 👤"))
 
 # import psutil
 # def check_rdp_sessions():

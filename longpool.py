@@ -6,6 +6,8 @@ import time
 from keyboards import *
 import logging
 import platform
+import subprocess
+import os
 
 bot = telebot.TeleBot(main_token)
 
@@ -51,6 +53,13 @@ def send_text(message):
     elif message.text.lower() in [(emojize("👤 пользователи 👤")), '/users']:
         for user in psutil.users():
             send(message.chat.id, f"👤 {user.name}, авторизован {int((time.time() - user.started)/60)} мин. назад", standart_keyboard)
+
+    elif message.text.lower() in [(emojize("🔗 vpn 🔗")), '/vpn_status']:
+        param = '-n' if platform.system().lower() == 'windows' else '-c'
+        command = ['ping', param, '1', "10.0.0.137"]
+        with open(os.devnull, 'w') as devnull:
+            if subprocess.call(command, stdout=devnull, stderr=devnull) == 0:
+                send(message.chat.id, f"⛔ VPN кем-то занят ⛔", standart_keyboard)
 
     elif message.text.lower() in ['/vpn_key']:
         if message.chat.id in users:
