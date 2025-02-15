@@ -60,6 +60,8 @@ def send_text(message):
         with open(os.devnull, 'w') as devnull:
             if subprocess.call(command, stdout=devnull, stderr=devnull) == 0:
                 send(message.chat.id, f"⛔ VPN кем-то занят ⛔", standart_keyboard)
+            else:
+                send(message.chat.id, f"✅ VPN свободен ✅", standart_keyboard)
 
     elif message.text.lower() in ['/vpn_key']:
         if message.chat.id in users:
