@@ -14,23 +14,12 @@ bot = telebot.TeleBot(main_token)
 logging.basicConfig(filename = 'logs.log',  filemode='a', level = logging.INFO, format = ' %(asctime)s - %(levelname)s - %(message)s', encoding = "UTF-8", datefmt='%d-%b-%y %H:%M:%S')
 logging.info('Лонгпул запущен...')
 
-# from openvpnclient import OpenVPNClient
-
-# # manually connect and disconnect
-# vpn = OpenVPNClient('client.ovpn')
-# vpn.connect()
-# print('ok')
-# # interact with network
-# vpn.disconnect()
-
-
 if time.time() - psutil.boot_time() < 100:
     for id in users:
         try:
             send(id, f'❗Сервер загружен в ОС {platform.system()}❗', standart_keyboard)
         except:
             logging.info(f'Проблемы с id: {id}')
-
 
 @bot.message_handler(content_types=["text"])
 def send_text(message):
@@ -71,8 +60,5 @@ def send_text(message):
         else:
             send(message.chat.id, f'Я вас не знаю... Ваш id не добавлен в систему. Я вам ничего не дам', standart_keyboard)
 
-
 def job_longpool():
     bot.infinity_polling()
-
-
