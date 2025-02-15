@@ -44,7 +44,7 @@ def send_text(message):
         uptime_seconds = time.time() - psutil.boot_time()
         send(message.chat.id, f'Сервер работает {int(uptime_seconds // 3600)} ч.', standart_keyboard)
 
-    elif message.text.lower() in [(emojize("📊 загруженность 📊")), '/monitoring']:
+    elif message.text.lower() in [(emojize("📊 мониторинг 📊")), '/monitoring']:
         bot.send_chat_action(message.chat.id, 'typing')
         cpu_percent = psutil.cpu_percent(interval=3)
         memory_percent = psutil.virtual_memory().percent
